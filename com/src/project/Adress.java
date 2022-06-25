@@ -1,4 +1,4 @@
-package lesson3;
+package project;
 
 public class Adress {
 	private String city;

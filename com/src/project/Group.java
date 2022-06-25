@@ -1,21 +1,22 @@
-package lesson3;
+package project;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Group {
 	Scanner sc = new Scanner(System.in);
 	private String groupName;
 	private int courseNumber;
-	private Student student1;
+	Student []stArray;
 	private Teacher teacher1;
 
-	Group(String groupName, int courseNumber, Student student1, Teacher teacher1) {
+	Group(String groupName, int courseNumber, Student []stArray, Teacher teacher1) {
 		this.groupName = groupName;
 		this.courseNumber = courseNumber;
-		this.student1 = student1;
+		this.stArray= stArray;
 		this.teacher1 = teacher1;
 	}
-	
+
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
@@ -23,15 +24,7 @@ public class Group {
 	public String getGroupName() {
 		return this.groupName;
 	}
-	
-	public void setStudent1(Student student1) {
-		this.student1 = student1;
-	}
 
-	public Student getStudent1() {
-		return this.student1;
-	}
-	
 	public void setTeacher1(Teacher teacher1) {
 		this.teacher1 = teacher1;
 	}
@@ -48,23 +41,26 @@ public class Group {
 		return this.courseNumber;
 	}
 
-	public void newStudent() {
-		System.out.println("Information about new student: ");
-		System.out.println("Vvedite familiyu novogo studenta:");
-		student1.setStudentSurname(sc.nextLine());
-		System.out.println("Vvedite imya novogo studenta:");
-		student1.setStudentName(sc.nextLine());
-		System.out.println("Vvedite vozrast novogo studenta:");
-		student1.setStudentAge(sc.nextInt());
-		System.out.println("Vvedite gorod novogo studenta:");
-		student1.getStudentAdr().setCity(sc.nextLine());
-		student1.getStudentAdr().setCity(sc.nextLine());
-		System.out.println("Vvedite ylicy novogo studenta:");
-		student1.getStudentAdr().setStreet(sc.nextLine());
-		System.out.println("Vvedite nomer doma novogo studenta:");
-		student1.getStudentAdr().setHomeNumber(sc.nextInt());
-		System.out.println("Vvedite nomer kvartiry novogo studenta:");
-		student1.getStudentAdr().setFlatNumber(sc.nextInt());
+    public void addStudent (Student newStudent){
+		Student []stArrayNew=new Student [stArray.length+1];
+		for (int i=0; i<stArray.length;i++){
+			stArrayNew[i]=stArray[i];
+		}
+		stArrayNew[stArrayNew.length-1]=newStudent;
+		stArray=stArrayNew;
+	}
+	public void deleteStudent (Student deleteStudent){
+		int count=0;
+		Student []stArrayNew=new Student [stArray.length-1];
+		for (int i=0; i<stArray.length;i++){
+			if (stArray[i]==deleteStudent){
+				count++;
+			}
+			if (stArray[i]!=deleteStudent){
+				stArrayNew[i-count]=stArray[i];
+			}
+		}
+		stArray=stArrayNew;
 	}
 
 	public void newTeacher() {
@@ -77,25 +73,22 @@ public class Group {
 		System.out.println("Vvedite vozrast novogo ychitelya:");
 		teacher1.setTeacherAge(sc.nextInt());
 		System.out.println("Vvedite gorod novogo ychitelya:");
-		teacher1.getTeacherAdr().setCity(sc.nextLine());
-		teacher1.getTeacherAdr().setCity(sc.nextLine());
+		teacher1.getAdress().setCity(sc.nextLine());
+		teacher1.getAdress().setCity(sc.nextLine());
 		System.out.println("Vvedite ylicy novogo ychitelya:");
-		teacher1.getTeacherAdr().setStreet(sc.nextLine());
+		teacher1.getAdress().setStreet(sc.nextLine());
 		System.out.println("Vvedite nomer doma novogo ychitelya:");
-		teacher1.getTeacherAdr().setHomeNumber(sc.nextInt());
+		teacher1.getAdress().setHomeNumber(sc.nextInt());
 		System.out.println("Vvedite nomer kvartiry novogo ychitelya:");
-		teacher1.getTeacherAdr().setFlatNumber(sc.nextInt());
+		teacher1.getAdress().setFlatNumber(sc.nextInt());
 		System.out.println("Vvedite dannie dlya rascheta zarplaty:");
 		teacher1.salary();
 		sc.close();
 	}
 
-	public void groupInfo() {
-		System.out.println("Information about group:");
-		System.out.println("Nazvanie gruppi: " + groupName + " nomer gruppi: " + courseNumber);
-		student1.studentInfo();
-		teacher1.teacherInfo();
 
+	public String toString(){
+		return "Information about group:\n"+"Nazvanie gruppi: " + groupName + "; nomer gruppi: " + courseNumber+ Arrays.toString(stArray)+teacher1.toString();
 	}
 
 }

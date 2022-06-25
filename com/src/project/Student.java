@@ -1,16 +1,17 @@
-package lesson3;
+package project;
 
-public class Student {
+public class Student extends People {
 	private String studentSurname;
 	private String studentName;
 	private int studentAge;
-	private Adress studentAdr;
+	//private Adress studentAdr;
 
-	Student(String studentSurname, String studentName, int studentAge, Adress studentAdr) {
+	Student(String studentSurname, String studentName, int studentAge, Adress adress) {
+		super(adress);
 		this.studentSurname = studentSurname;
 		this.studentName = studentName;
 		this.studentAge = studentAge;
-		this.studentAdr = studentAdr;
+		//this.studentAdr = studentAdr;
 	}
 
 	public void setStudentSurname(String studentSurname) {
@@ -37,19 +38,15 @@ public class Student {
 		return this.studentAge;
 	}
 	
-	public void setStudentAdr(Adress studentAdr) {
-		this.studentAdr = studentAdr;
-	}
+//	public void setStudentAdr(Adress studentAdr) {
+//		this.studentAdr = studentAdr;
+//	}
 
-	public Adress getStudentAdr() {
-		return this.studentAdr;
-	}
+//	public Adress getStudentAdr() {
+//		return this.studentAdr;
+//	}
 
-	public void studentInfo() {
-		System.out.println("Information about student:");
-		System.out.println("adress:");
-		System.out.println(studentAdr.getCity() + " " + studentAdr.getStreet() + " " + studentAdr.getHomeNumber() + " "
-				+ studentAdr.getFlatNumber());
-		System.out.println("surname: " + studentSurname + " name: " + studentName + " age: " + studentAge);
+	public String toString(){
+		return "\nInformation about student:\n"+"surname: " + studentSurname + "; name: " + studentName + "; age: " + studentAge+"\nadress: "+super.getAdress().getCity() + ", " + super.getAdress().getStreet() + ", " + super.getAdress().getHomeNumber() + ", " + super.getAdress().getFlatNumber();
 	}
 }
