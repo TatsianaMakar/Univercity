@@ -1,18 +1,19 @@
-package lesson3;
+package project;
 
 import java.util.Scanner;
 
-public class Teacher {
+public class Teacher extends People {
 	private String teacherSurname;
 	private String teacherName;
 	private int teacherAge;
-	private Adress teacherAdr;
+	//private Adress teacherAdr;
 
-	Teacher(String teacherSurname, String teacherName, int teacherAge, Adress teacherAdr) {
+	Teacher(String teacherSurname, String teacherName, int teacherAge, Adress adress) {
+		super(adress);
 		this.teacherSurname = teacherSurname;
 		this.teacherName = teacherName;
 		this.teacherAge = teacherAge;
-		this.teacherAdr = teacherAdr;
+		//this.teacherAdr = teacherAdr;
 	}
 
 	public void setTeacherSurname(String teacherSurname) {
@@ -39,20 +40,16 @@ public class Teacher {
 		return this.teacherAge;
 	}
 	
-	public void setTeacherAdr(Adress teacherAdr) {
-		this.teacherAdr = teacherAdr;
-	}
+//	public void setTeacherAdr(Adress teacherAdr) {
+//		this.teacherAdr = teacherAdr;
+//	}
 
-	public Adress getTeacherAdr() {
-		return this.teacherAdr;
-	}
+//	public Adress getTeacherAdr() {
+//		return this.teacherAdr;
+//	}
 
-	public void teacherInfo() {
-		System.out.println("Information about teacher:");
-		System.out.println("adress:");
-		System.out.println(teacherAdr.getCity() + " " + teacherAdr.getStreet() + " " + teacherAdr.getHomeNumber() + " "
-				+ teacherAdr.getFlatNumber());
-		System.out.println("surname: " + teacherSurname + " name: " + teacherName + " age: " + teacherAge);
+	public String toString(){
+		return "\nInformation about teacher:"+"\nsurname: " + teacherSurname + "; name: " + teacherName + "; age: " + teacherAge+"\nadress: "+super.getAdress().getCity() + ", " + super.getAdress().getStreet() + ", " + super.getAdress().getHomeNumber() + ", " + super.getAdress().getFlatNumber();
 	}
 
 	public int salary() {
