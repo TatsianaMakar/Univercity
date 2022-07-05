@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,11 +8,12 @@ public class Group {
     private int courseNumber;
     Student []stArray;
     private Teacher teacher1;
+    ArrayList<Student> studentArrayList;
 
-    Group(String groupName, int courseNumber, Student []stArray, Teacher teacher1) {
+    Group(String groupName, int courseNumber, ArrayList <Student> studentArrayList, Teacher teacher1) {
         this.groupName = groupName;
         this.courseNumber = courseNumber;
-        this.stArray= stArray;
+        this.studentArrayList= studentArrayList;
         this.teacher1 = teacher1;
     }
 
@@ -40,25 +42,11 @@ public class Group {
     }
 
     public void addStudent (Student newStudent){
-        Student []stArrayNew=new Student [stArray.length+1];
-        for (int i=0; i<stArray.length;i++){
-            stArrayNew[i]=stArray[i];
-        }
-        stArrayNew[stArrayNew.length-1]=newStudent;
-        stArray=stArrayNew;
+        studentArrayList.add(newStudent);
     }
+
     public void deleteStudent (Student deleteStudent){
-        int count=0;
-        Student []stArrayNew=new Student [stArray.length-1];
-        for (int i=0; i<stArray.length;i++){
-            if (stArray[i]==deleteStudent){
-                count++;
-            }
-            if (stArray[i]!=deleteStudent){
-                stArrayNew[i-count]=stArray[i];
-            }
-        }
-        stArray=stArrayNew;
+        studentArrayList.remove(deleteStudent);
     }
 
     public void newTeacher() {
@@ -84,9 +72,8 @@ public class Group {
         sc.close();
     }
 
-
     public String toString(){
-        return "Information about group:\n"+"Nazvanie gruppi: " + groupName + "; nomer gruppi: " + courseNumber+ Arrays.toString(stArray)+teacher1.toString();
+        return "Information about group:\n"+"Nazvanie gruppi: " + groupName + "; nomer gruppi: " + courseNumber+ studentArrayList+teacher1.toString();
     }
 
 }
