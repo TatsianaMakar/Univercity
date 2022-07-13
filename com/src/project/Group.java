@@ -1,5 +1,6 @@
 package project;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,15 +8,22 @@ public class Group {
 	Scanner sc = new Scanner(System.in);
 	private String groupName;
 	private int courseNumber;
-	Student []stArray;
+	//Student []stArray;
 	private Teacher teacher1;
+	ArrayList<Student> studentArrayList;
+	private int yearOfAdmission;
+	private int graduationYear;
 
-	Group(String groupName, int courseNumber, Student []stArray, Teacher teacher1) {
+
+	Group(String groupName, int courseNumber, ArrayList <Student> studentArrayList, Teacher teacher1,int yearOfAdmission, int graduationYear) {
 		this.groupName = groupName;
 		this.courseNumber = courseNumber;
-		this.stArray= stArray;
+		this.studentArrayList= studentArrayList;
 		this.teacher1 = teacher1;
+		this.yearOfAdmission=yearOfAdmission;
+		this.graduationYear=graduationYear;
 	}
+
 
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
@@ -32,7 +40,7 @@ public class Group {
 	public Teacher getteacher1() {
 		return this.teacher1;
 	}
-	
+
 	public void setCourseNumber(int courseNumber) {
 		this.courseNumber = courseNumber;
 	}
@@ -41,33 +49,35 @@ public class Group {
 		return this.courseNumber;
 	}
 
-    public void addStudent (Student newStudent){
-		Student []stArrayNew=new Student [stArray.length+1];
-		for (int i=0; i<stArray.length;i++){
-			stArrayNew[i]=stArray[i];
-		}
-		stArrayNew[stArrayNew.length-1]=newStudent;
-		stArray=stArrayNew;
+	public void addStudent (Student newStudent){
+		studentArrayList.add(newStudent);
 	}
+
 	public void deleteStudent (Student deleteStudent){
-		int count=0;
-		Student []stArrayNew=new Student [stArray.length-1];
-		for (int i=0; i<stArray.length;i++){
-			if (stArray[i]==deleteStudent){
-				count++;
-			}
-			if (stArray[i]!=deleteStudent){
-				stArrayNew[i-count]=stArray[i];
-			}
-		}
-		stArray=stArrayNew;
+		studentArrayList.remove(deleteStudent);
+	}
+
+	public void setYearOfAdmission(int yearOfAdmission) {
+		this.yearOfAdmission = yearOfAdmission;
+	}
+
+	public int getYearOfAdmission() {
+		return this.yearOfAdmission;
+	}
+
+	public void setGraduationYear(int graduationYear) {
+		this.graduationYear = graduationYear;
+	}
+
+	public int getGraduationYear() {
+		return this.graduationYear;
 	}
 
 	public void newTeacher() {
 		System.out.println("Information about new teacher: ");
 		System.out.println("Vvedite familiyu novogo ychitelya:");
 		teacher1.setTeacherSurname(sc.nextLine());
-		teacher1.setTeacherSurname(sc.nextLine());
+		//teacher1.setTeacherSurname(sc.nextLine());
 		System.out.println("Vvedite imya novogo ychitelya:");
 		teacher1.setTeacherName(sc.nextLine());
 		System.out.println("Vvedite vozrast novogo ychitelya:");
@@ -81,14 +91,17 @@ public class Group {
 		teacher1.getAdress().setHomeNumber(sc.nextInt());
 		System.out.println("Vvedite nomer kvartiry novogo ychitelya:");
 		teacher1.getAdress().setFlatNumber(sc.nextInt());
+		System.out.println("Vvedite pol novogo ychitelya: woman or man");
+		teacher1.setGender(sc.nextLine());
+		teacher1.setGender(sc.nextLine());
 		System.out.println("Vvedite dannie dlya rascheta zarplaty:");
 		teacher1.salary();
 		sc.close();
 	}
 
-
 	public String toString(){
-		return "Information about group:\n"+"Nazvanie gruppi: " + groupName + "; nomer gruppi: " + courseNumber+ Arrays.toString(stArray)+teacher1.toString();
+		return "Information about group:\n"+"Nazvanie gruppi: " + groupName + "; nomer gruppi: " + courseNumber+ studentArrayList+teacher1.toString()+"; god postupleniya: "+yearOfAdmission+"; god okonchaniya: "+graduationYear;
 	}
+
 
 }
