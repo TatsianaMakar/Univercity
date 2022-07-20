@@ -16,6 +16,12 @@ public abstract class People implements Comparable<People>{
         this.adress = adress;
         this.gender = gender;
     }
+    public People(String surname, String name, int age, String gender) {
+        this.surname = surname;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 
     public Adress getAdress() {
         return adress;

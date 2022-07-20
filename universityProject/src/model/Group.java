@@ -9,7 +9,7 @@ public class Group {
 	private int courseNumber;
 	//Student []stArray;
 	private Teacher teacher1;
-	ArrayList<Student> studentArrayList;
+	private ArrayList<Student> studentArrayList;
 	private int yearOfAdmission;
 	private int graduationYear;
 
@@ -22,7 +22,6 @@ public class Group {
 		this.yearOfAdmission=yearOfAdmission;
 		this.graduationYear=graduationYear;
 	}
-
 
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
@@ -70,6 +69,14 @@ public class Group {
 
 	public int getGraduationYear() {
 		return this.graduationYear;
+	}
+
+	public void setStudentArrayList(ArrayList<Student> studentArrayList) {
+		this.studentArrayList = studentArrayList;
+	}
+
+	public ArrayList<Student> getStudentArrayList() {
+		return this.studentArrayList;
 	}
 
 	public void newTeacher() {

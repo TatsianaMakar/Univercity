@@ -10,6 +10,9 @@ public class Student extends People {
 	public Student(String surname, String name, int age, Adress adress, String gender) {
 		super(surname, name, age, adress, gender);
 	}
+	public Student(String surname, String name, int age, String gender) {
+		super(surname, name, age, gender);
+	}
 
 	@Override
 	public String toString() {

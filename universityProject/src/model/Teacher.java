@@ -18,6 +18,10 @@ public class Teacher extends People {
 		super(surname, name, age, adress, gender);
 		this.salary = salary;
 	}
+	public Teacher(String surname, String name, int age, String gender, int salary) {
+		super(surname, name, age, gender);
+		this.salary = salary;
+	}
 
 	public void setSalary(int salary) {
 		this.salary = salary;
