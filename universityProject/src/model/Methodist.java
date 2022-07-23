@@ -24,6 +24,6 @@ public class Methodist extends People {
 
     @Override
     public String toString() {
-        return "\nMentors surname: "+getSurname()+" name: "+getName()+" age: "+getAge();
+        return "\nMenthodist surname: "+getSurname()+" name: "+getName()+" age: "+getAge();
     }
 }

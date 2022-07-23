@@ -1,0 +1,2 @@
+AAAAAAA Tatsiana 35 Minsk Gintovta 18 8 woman Dovgel Tatsiana 35 Minsk Masherova 4 59 800 woman Kevlich Evgenij 76 Minsk Gintovta 18 8 1600 man Klichko Irina 70 Borisov Gagarina 67 282 2000 woman
+BBBBBBB Ivanna 56 Borisov Chapaeva 1 15 woman Dovgel Tatsiana 35 Minsk Masherova 4 59 800 woman Kevlich Evgenij 76 Minsk Gintovta 18 8 1600 man
